@@ -1,6 +1,6 @@
 import { createClient } from "next-sanity";
 import React from "react";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 import Head from "next/head";
 import NavBar from "@/components/navbar";
 import PortableText from "react-portable-text";
@@ -8,7 +8,8 @@ import { Blog } from "../../types/blogTypes";
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import imageUrlBuilder from '@sanity/image-url'
 import Link from "next/link";
-import { AuthorSchema, ImageField } from "@/app/types/authorTypes";
+// import Link from "next/link";
+// import { AuthorSchema, ImageField } from "@/app/types/authorTypes";
 
 
 
@@ -37,10 +38,10 @@ async function fetchBlog(slug:string): Promise<Blog> {
   return client.fetch(query, {slug});
 }   
 
-async function fetchProfile(): Promise<Profile> {
-  const profileQuery = `*[_type == "profile"][0]`;
-  return client.fetch(profileQuery); 
-}
+// async function fetchProfile(): Promise<Profile> {
+//   const profileQuery = `*[_type == "profile"][0]`;
+//   return client.fetch(profileQuery); 
+// }
 
 const builder = imageUrlBuilder(client);
 
@@ -52,7 +53,7 @@ function urlFor(source: SanityImageSource) {
 export default async function BlogPage({ params }: { params: {slug : string} }) {
   const slug  = params.slug;
 
-  const [blog, profile] = await Promise.all([fetchBlog(slug),fetchProfile()]);
+  const [blog] = await Promise.all([fetchBlog(slug)]);
 
     // console.log("blog", blog);
     // console.log("Blog content:", blog.content);
@@ -96,7 +97,7 @@ export default async function BlogPage({ params }: { params: {slug : string} }) 
       href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/atom-one-dark.min.css" />
   </Head>
 
-  <NavBar profile={profile} />
+  <NavBar />
 
   <div className="container mx-auto py-6 md:py-10">
     <div className="max-w-4xl mx-auto">
@@ -125,16 +126,16 @@ export default async function BlogPage({ params }: { params: {slug : string} }) 
         />
       </div>
       <div className="mt-10 flex justify-between border-t border-lila py-12">
-        <a href="/" className="flex items-center">
+        <Link href="/" className="flex items-center">
           <i className="bx bx-left-arrow-alt text-2xl text-primary"></i>
           <span className="block pl-2 font-body text-lg font-bold uppercase text-primary md:pl-5">Previous
             Post</span>
-        </a>
-        <a href="/" className="flex items-center">
+        </Link>
+        <Link href="/" className="flex items-center">
           <span className="block pr-2 font-body text-lg font-bold uppercase text-primary md:pr-5">Next
             Post</span>
           <i className="bx bx-right-arrow-alt text-2xl text-primary"></i>
-        </a>
+        </Link>
       </div>
     </div>
   
@@ -144,30 +145,21 @@ export default async function BlogPage({ params }: { params: {slug : string} }) 
       © Copyright 2022. All right reserved, ATOM.
     </p>
     <div className="flex items-center justify-center pt-5 sm:justify-start sm:pt-0">
-      <a href="/">
+      <Link href="/">
         <i className="bx bxl-facebook-square text-2xl text-black hover:text-yellow">fb</i>
-      </a>
-      <a href="/" className="pl-4">
+      </Link>
+      <Link href="/" className="pl-4">
         <i className="bx bxl-twitter text-2xl text-black hover:text-yellow">twitter</i>
-      </a>
-      <a href="/" className="pl-4">
+      </Link>
+      <Link href="/" className="pl-4">
         <i className="bx bxl-linkedin text-2xl text-black hover:text-yellow">linkedin</i>
-      </a>
-      <a href="/" className="pl-4">
+      </Link>
+      <Link href="/" className="pl-4">
         <i className="bx bxl-instagram text-2xl text-black hover:text-yellow">instagram</i>
-      </a>
+      </Link>
     </div>
   </div>
 </div>
-  
-  
-  </div>
-
-  
-
+</div>
 </>
-
-  )
-
-
-}
+)}

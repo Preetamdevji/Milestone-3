@@ -3,10 +3,10 @@ import Head from "next/head";
 import Link from "next/link";
 import Script from "next/script";
 import imageUrlBuilder from "@sanity/image-url";
-import styles from "../styles/Home.module.css";
-import PortableText from "react-portable-text";
+// import styles from "../styles/Home.module.css";
+// import PortableText from "react-portable-text";
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
-import NavBar from "@/components/navbar";
+// import NavBar from "@/components/navbar";
 
 
 
@@ -41,17 +41,17 @@ interface Blog {
 }
 
 export default async function Home({
-  content,
+  // content,
   // profile,
 }: {
-  content: any;
+  // content: any;
   // profile: any;
 }) {
   const query = `*[_type == "blog"][0...3]`;
   const blogs: Blog[] = await client.fetch(query); // Use the Blog[] type here
   // console.log("Blogs in the browser:", blogs);
 
-  const builder = imageUrlBuilder(client);
+  // const builder = imageUrlBuilder(client);
 
   const profile = {
     title: "Portfolio&Blogs",
@@ -142,88 +142,91 @@ export default async function Home({
         ></script>
       </Head>
       {/* <NavBar profile={profile} /> */}
-      <div className="w-full z-50 top-0 py-3 sm:py-5 absolute bg-transparent">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-end">
-            {/* Desktop Menu */}
-            <div className="hidden lg:block">
-              <ul className="flex items-center justify-end">
-                <li className="group pl-6">
-                  <a href="#about">
-                    <span className="cursor-pointer pt-0.5 font-header font-semibold uppercase text-white">
-                      About
-                    </span>
-                  </a>
-                  <span className="block h-0.5 w-full bg-transparent group-hover:bg-yellow"></span>
-                </li>
-                <li className="group pl-6">
-                  <a href="#services">
-                    <span className="cursor-pointer pt-0.5 font-header font-semibold uppercase text-white">
-                      Services
-                    </span>
-                  </a>
-                  <span className="block h-0.5 w-full bg-transparent group-hover:bg-yellow"></span>
-                </li>
-                <li className="group pl-6">
-                  <a href="#portfolio">
-                    <span className="cursor-pointer pt-0.5 font-header font-semibold uppercase text-white">
-                      Portfolio
-                    </span>
-                  </a>
-                  <span className="block h-0.5 w-full bg-transparent group-hover:bg-yellow"></span>
-                </li>
-                <li className="group pl-6">
-                  <a href="#clients">
-                    <span className="cursor-pointer pt-0.5 font-header font-semibold uppercase text-white">
-                      Clients
-                    </span>
-                  </a>
-                  <span className="block h-0.5 w-full bg-transparent group-hover:bg-yellow"></span>
-                </li>
-                <li className="group pl-6">
-                  <a href="#work">
-                    <span className="cursor-pointer pt-0.5 font-header font-semibold uppercase text-white">
-                      Work
-                    </span>
-                  </a>
-                  <span className="block h-0.5 w-full bg-transparent group-hover:bg-yellow"></span>
-                </li>
-                <li className="group pl-6">
-                  <a href="#statistics">
-                    <span className="cursor-pointer pt-0.5 font-header font-semibold uppercase text-white">
-                      Statistics
-                    </span>
-                  </a>
-                  <span className="block h-0.5 w-full bg-transparent group-hover:bg-yellow"></span>
-                </li>
-                <li className="group pl-6">
-                  <a href="#blog">
-                    <span className="cursor-pointer pt-0.5 font-header font-semibold uppercase text-white">
-                      Blog
-                    </span>
-                  </a>
-                  <span className="block h-0.5 w-full bg-transparent group-hover:bg-yellow"></span>
-                </li>
-                <li className="group pl-6">
-                  <a href="#contact">
-                    <span className="cursor-pointer pt-0.5 font-header font-semibold uppercase text-white">
-                      Contact
-                    </span>
-                  </a>
-                  <span className="block h-0.5 w-full bg-transparent group-hover:bg-yellow"></span>
-                </li>
-              </ul>
-            </div>
+      
 
-            {/* Mobile Menu */}
-            <div className="block lg:hidden">
-              <button>
-                <i className="bx bx-menu text-4xl text-white"></i>
-              </button>
-            </div>
-          </div>
-        </div>
+      <div className="w-full z-50 top-0 py-3 sm:py-5 absolute bg-transparent">
+  <div className="container mx-auto px-4">
+    <div className="flex items-center justify-end">
+      {/* Desktop Menu */}
+      <div className="hidden lg:block">
+        <ul className="flex items-center justify-end">
+          <li className="group pl-6">
+            <Link href="#about">
+              <span className="cursor-pointer pt-0.5 font-header font-semibold uppercase text-white">
+                About
+              </span>
+            </Link>
+            <span className="block h-0.5 w-full bg-transparent group-hover:bg-yellow"></span>
+          </li>
+          <li className="group pl-6">
+            <Link href="#services">
+              <span className="cursor-pointer pt-0.5 font-header font-semibold uppercase text-white">
+                Services
+              </span>
+            </Link>
+            <span className="block h-0.5 w-full bg-transparent group-hover:bg-yellow"></span>
+          </li>
+          <li className="group pl-6">
+            <Link href="#portfolio">
+              <span className="cursor-pointer pt-0.5 font-header font-semibold uppercase text-white">
+                Portfolio
+              </span>
+            </Link>
+            <span className="block h-0.5 w-full bg-transparent group-hover:bg-yellow"></span>
+          </li>
+          <li className="group pl-6">
+            <Link href="#clients">
+              <span className="cursor-pointer pt-0.5 font-header font-semibold uppercase text-white">
+                Clients
+              </span>
+            </Link>
+            <span className="block h-0.5 w-full bg-transparent group-hover:bg-yellow"></span>
+          </li>
+          <li className="group pl-6">
+            <Link href="#work">
+              <span className="cursor-pointer pt-0.5 font-header font-semibold uppercase text-white">
+                Work
+              </span>
+            </Link>
+            <span className="block h-0.5 w-full bg-transparent group-hover:bg-yellow"></span>
+          </li>
+          <li className="group pl-6">
+            <Link href="#statistics">
+              <span className="cursor-pointer pt-0.5 font-header font-semibold uppercase text-white">
+                Statistics
+              </span>
+            </Link>
+            <span className="block h-0.5 w-full bg-transparent group-hover:bg-yellow"></span>
+          </li>
+          <li className="group pl-6">
+            <Link href="#blog">
+              <span className="cursor-pointer pt-0.5 font-header font-semibold uppercase text-white">
+                Blog
+              </span>
+            </Link>
+            <span className="block h-0.5 w-full bg-transparent group-hover:bg-yellow"></span>
+          </li>
+          <li className="group pl-6">
+            <Link href="#contact">
+              <span className="cursor-pointer pt-0.5 font-header font-semibold uppercase text-white">
+                Contact
+              </span>
+            </Link>
+            <span className="block h-0.5 w-full bg-transparent group-hover:bg-yellow"></span>
+          </li>
+        </ul>
       </div>
+
+      {/* Mobile Menu */}
+      <div className="block lg:hidden">
+        <button>
+          <i className="bx bx-menu text-4xl text-white"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
       <div className="pointer-events-none fixed inset-0 z-70 min-h-screen bg-black bg-opacity-70 opacity-0 transition-opacity lg:hidden" />
 
@@ -254,12 +257,12 @@ export default async function Home({
                     </div>
                   </div>
                   <div className="flex items-center justify-center pt-5 pl-2 sm:justify-start sm:pt-0">
-                    <a href={profile?.fbLink}>
+                    <Link href={profile?.fbLink}>
                       <i className="bx bxl-facebook-square text-2xl text-black hover:text-yellow"></i>
-                    </a>
-                    <a href={profile?.fbLink} className="pl-4">
+                    </Link>
+                    <Link href={profile?.fbLink} className="pl-4">
                       <i className="bx bxl-linkedin text-2xl text-black hover:text-yellow"></i>
-                    </a>
+                    </Link>
                     
                   </div>
                 </div>
@@ -302,12 +305,12 @@ export default async function Home({
                   </div>
                 </div>
                 <div className="flex items-center justify-center pt-5 pl-2 sm:justify-start sm:pt-0">
-                  <a href="/">
+                  <Link href="/">
                     <i className="bx bxl-facebook-square text-2xl text-primary hover:text-yellow">fb</i>
-                  </a>
-                  <a href="/" className="pl-4">
+                  </Link>
+                  <Link href="/" className="pl-4">
                     <i className="bx bxl-linkedin text-2xl text-primary hover:text-yellow">linkin </i>
-                  </a>
+                  </Link>
                   
                 </div>
               </div>
@@ -476,7 +479,7 @@ export default async function Home({
           </h3>
 
           <div className="mx-auto grid w-full grid-cols-1 gap-8 pt-12 sm:w-3/4 md:gap-10 lg:w-full lg:grid-cols-2">
-            <a
+            <Link
               href="/"
               className="mx-auto transform transition-all hover:scale-105 md:mx-0"
             >
@@ -485,8 +488,8 @@ export default async function Home({
                 className="w-full shadow"
                 alt="portfolio image"
               />
-            </a>
-            <a
+            </Link>
+            <Link
               href="/"
               className="mx-auto transform transition-all hover:scale-105 md:mx-0"
             >
@@ -495,8 +498,8 @@ export default async function Home({
                 className="w-full shadow"
                 alt="portfolio image"
               />
-            </a>
-            <a
+            </Link>
+            <Link
               href="/"
               className="mx-auto transform transition-all hover:scale-105 md:mx-0"
             >
@@ -505,8 +508,8 @@ export default async function Home({
                 className="w-full shadow"
                 alt="portfolio image"
               />
-            </a>
-            <a
+            </Link>
+            <Link
               href="/"
               className="mx-auto transform transition-all hover:scale-105 md:mx-0"
             >
@@ -515,7 +518,7 @@ export default async function Home({
                 className="w-full shadow"
                 alt="portfolio image"
               />
-            </a>
+            </Link>
           </div>
         </div>
 
@@ -981,21 +984,21 @@ export default async function Home({
             © Copyright 2022. All right reserved, ATOM.
           </p>
           <div className="flex items-center justify-center pt-5 sm:justify-start sm:pt-0">
-            <a href="/">
+            <Link href="/">
               <i className="bx bxl-facebook-square text-2xl text-white hover:text-yellow"></i>
-            </a>
-            <a href="/" className="pl-4">
+            </Link>
+            <Link href="/" className="pl-4">
               <i className="bx bxl-twitter text-2xl text-white hover:text-yellow"></i>
-            </a>
-            <a href="/" className="pl-4">
+            </Link>
+            <Link href="/" className="pl-4">
               <i className="bx bxl-dribbble text-2xl text-white hover:text-yellow"></i>
-            </a>
-            <a href="/" className="pl-4">
+            </Link>
+            <Link href="/" className="pl-4">
               <i className="bx bxl-linkedin text-2xl text-white hover:text-yellow"></i>
-            </a>
-            <a href="/" className="pl-4">
+            </Link>
+            <Link href="/" className="pl-4">
               <i className="bx bxl-instagram text-2xl text-white hover:text-yellow"></i>
-            </a>
+            </Link>
           </div>
         </div>
       </div>

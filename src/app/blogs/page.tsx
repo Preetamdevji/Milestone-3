@@ -1,10 +1,10 @@
 import { createClient } from "next-sanity";
-import Head from "next/head";
+// import Head from "next/head";
 import Link from "next/link";
-import Script from "next/script";
+// import Script from "next/script";
 import imageUrlBuilder from '@sanity/image-url'
-import styles from '../styles/Home.module.css'
-import PortableText from "react-portable-text"
+// import styles from '../styles/Home.module.css'
+// import PortableText from "react-portable-text"
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import NavBar from "@/components/navbar";
 
@@ -41,7 +41,7 @@ interface Blog {
 }
 
 
-export default async function Blogs({content, profile}: {content: any; profile: any}) {
+export default async function Blogs() {
 
   
   const query = `*[_type == "blog"]`;
@@ -52,7 +52,7 @@ export default async function Blogs({content, profile}: {content: any; profile: 
 
   return (
     <div>
-      <NavBar profile={profile} />
+      <NavBar />
       <div className="bg-grey-50 my-12" id="blog">
         <div className="container py-16 md:py-20 mx-auto">
           <h2 className="text-center font-header text-4xl font-semibold uppercase text-primary sm:text-5xl lg:text-6xl">
