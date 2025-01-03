@@ -7,6 +7,7 @@ import imageUrlBuilder from "@sanity/image-url";
 // import PortableText from "react-portable-text";
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 // import NavBar from "@/components/navbar";
+import profile from "./types/profile"
 
 
 
@@ -52,16 +53,7 @@ export default async function Home({
   // console.log("Blogs in the browser:", blogs);
 
   // const builder = imageUrlBuilder(client);
-
-  const profile = {
-    title: "Portfolio&Blogs",
-    name : "Preetam Devji",
-    image: "",
-    fbLink: "",
-    instagram:"",
   
-  }
-
   return (
     <>
       <Script src="/assets/js/main.js"></Script>
@@ -980,24 +972,15 @@ export default async function Home({
       </div>
       <div className="bg-primary">
         <div className="container flex flex-col justify-between py-6 sm:flex-row">
-          <p className="text-center font-body text-white md:text-left">
-            © Copyright 2022. All right reserved, ATOM.
+          <p className="text-center font-body text-black md:text-left">
+            © Copyright 2022. All right reserved, {profile.name}.
           </p>
           <div className="flex items-center justify-center pt-5 sm:justify-start sm:pt-0">
-            <Link href="/">
-              <i className="bx bxl-facebook-square text-2xl text-white hover:text-yellow"></i>
+            <Link href={profile.fbLink}>
+              <i className="bx bxl-facebook-square text-2xl text-black hover:text-yellow">Facebook</i>
             </Link>
-            <Link href="/" className="pl-4">
-              <i className="bx bxl-twitter text-2xl text-white hover:text-yellow"></i>
-            </Link>
-            <Link href="/" className="pl-4">
-              <i className="bx bxl-dribbble text-2xl text-white hover:text-yellow"></i>
-            </Link>
-            <Link href="/" className="pl-4">
-              <i className="bx bxl-linkedin text-2xl text-white hover:text-yellow"></i>
-            </Link>
-            <Link href="/" className="pl-4">
-              <i className="bx bxl-instagram text-2xl text-white hover:text-yellow"></i>
+            <Link href={profile.linkedin} className="pl-4">
+              <i className="bx bxl-linkedin text-2xl text-black hover:text-yellow">LinkedIn</i>
             </Link>
           </div>
         </div>
@@ -1005,3 +988,5 @@ export default async function Home({
     </>
   );
 }
+
+

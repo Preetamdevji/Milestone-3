@@ -10,12 +10,9 @@ import imageUrlBuilder from '@sanity/image-url'
 import Link from "next/link";
 // import Link from "next/link";
 // import { AuthorSchema, ImageField } from "@/app/types/authorTypes";
+import profile from "../../types/profile"
 
 
-
-interface Profile {
-  name: string;
-}
 
 const client = createClient({
   projectId: "oxubsq9i",
@@ -50,7 +47,7 @@ function urlFor(source: SanityImageSource) {
 }
 
 
-export default async function BlogPage({ params }: { params: {slug : string} }) {
+export default async function BlogPage({ params }: any) {
   const slug  = params.slug;
 
   const [blog] = await Promise.all([fetchBlog(slug)]);
@@ -107,12 +104,12 @@ export default async function BlogPage({ params }: { params: {slug : string} }) 
         </h1>
         <div className="flex items-center pt-5 md:pt-10">
           <div>
-            <img src="/assets/img/blog-author.jpg"
+            <img src={profile.image}
               className="h-20 w-20 rounded-full border-2 border-grey-70 shadow"
               alt="author image" />
           </div>
           <div className="pl-5">
-            <span className="block font-body text-xl font-bold text-grey-10">By Preetam Devji</span>
+            <span className="block font-body text-xl font-bold text-grey-10">By {profile.name}</span>
             <span className="block pt-1 font-body text-xl font-bold text-grey-30">Janunary 1,
               2025</span>
           </div>
@@ -142,24 +139,24 @@ export default async function BlogPage({ params }: { params: {slug : string} }) 
     <div className="bg-primary">
   <div className="container flex flex-col justify-between py-6 sm:flex-row">
     <p className="text-center font-body text-black md:text-left">
-      © Copyright 2022. All right reserved, ATOM.
+      © Copyright 2022. All right reserved, {profile.name}.
     </p>
     <div className="flex items-center justify-center pt-5 sm:justify-start sm:pt-0">
-      <Link href="/">
-        <i className="bx bxl-facebook-square text-2xl text-black hover:text-yellow">fb</i>
+      <Link href={profile.fbLink}>
+        <i className="bx bxl-facebook-square text-2xl text-black hover:text-yellow">Facebook</i>
       </Link>
-      <Link href="/" className="pl-4">
-        <i className="bx bxl-twitter text-2xl text-black hover:text-yellow">twitter</i>
+    
+      <Link href={profile.linkedin} className="pl-4">
+        <i className="bx bxl-linkedin text-2xl text-black hover:text-yellow">Linkedin</i>
       </Link>
-      <Link href="/" className="pl-4">
-        <i className="bx bxl-linkedin text-2xl text-black hover:text-yellow">linkedin</i>
-      </Link>
-      <Link href="/" className="pl-4">
-        <i className="bx bxl-instagram text-2xl text-black hover:text-yellow">instagram</i>
-      </Link>
+      
     </div>
   </div>
 </div>
 </div>
 </>
-)}
+
+  )
+
+
+}
